@@ -1,35 +1,54 @@
 "use strict";
 
-const rectangle = {
-    x1: 20,
-    x2: 40,
-    y1: 20,
-    y2: 40,
-    width: 30,
-    height: 30,
-}
+    let x1 = 20;
+    let x2 = 40;
+    let x3 = 20;
+    let y1 = 20;
+    let y2 = 40;
+    let y3 = 20;
+    let width = 30;
+    let height = 30;
+    let color =  {
+        r: 255,
+        g: 255,
+        b: 255
+    }
 function setup() {
-    console.log("go")
 }
 
 function draw() {
+    console.log(y3)
     createCanvas(400,400);
     background('#000000');
+    moveRectangle();
     push();
     fill(255,255,255);
-    ectangle.x1,rectangle.y1,rectangle.width,rectangle.height);
-    rectangle(rectangle.x2,rectangle.y2,rectangle.width,rectangle.height);
+    rect(x1,y1,width,height);
+    fill(100,100,100);
+    rect(x2,y2,width,height);
+    color.r = mouseX;
+    color.g = mouseY;
+    color.b = mouseX-mouseY;
+    fill(color.r,color.g,color.b);
+    rect(x3,y3,width,height);
     pop();
 }
 
 function mousePressed(){
-   rectangle.x1+=1;
-   rectangle.y1+=1;
+   x1+=1;
+   y1+=1;
 }
 
 function keyPressed(){
-    if (key==="32"){
-        rectangle.x2+=1;
-        rectangle.y2+=1;
+    if (keyCode ===32){
+        x2+=1;
+        y2+=1;
+    }
+}
+
+function moveRectangle(){
+    y3+=1;
+    if (y3 > 400){
+        y3=0;
     }
 }

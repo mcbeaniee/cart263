@@ -1,16 +1,5 @@
 "use strict";
 
-const elipse = {
-    x: 10,
-    y: 10,
-    width: 10,
-    height: 10,
-    color: {
-        r: 255,
-        g: 255,
-        b: 255
-    }
-}
 function setup() {
     console.log("go")
 }
