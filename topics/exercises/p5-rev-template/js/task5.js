@@ -30,7 +30,7 @@ function draw() {
     drawEllipses();
     console.log(counter);
     fill(255,255,255);
-    ellipse(300,300,radius,radius);
+    
 }
 
 function mousePressed(){
@@ -51,8 +51,27 @@ function drawButton(){
 }
 
 function drawEllipses(){
-    while (counter>0){
-        fill(255,255,255);
+    if (counter>0){
+        alpha(50);
+        fill(255,255,255,40);
         ellipse(300,300,radius,radius);
-    }
+    } if (counter>1){
+        ellipse(300,300,radius+20,radius+20);
+    } if (counter>2){
+        ellipse(300,300,radius+40,radius+40);
+    } if (counter>3){
+        ellipse(300,300,radius+60,radius+60);
+    } if (counter>4){
+        ellipse(300,300,radius+80,radius+80);
+    } if (counter>5){
+        ellipse(300,300,radius+100,radius+100);
+    } if (counter>6){
+        ellipse(300,300,radius+120,radius+120);
+    } if (counter>7){
+        ellipse(300,300,radius+140,radius+140);
+    } if (counter>8){
+        ellipse(300,300,radius+160,radius+160);
+    } if (counter>9){
+        ellipse(300,300,radius+180,radius+180);
+    } 
 }
