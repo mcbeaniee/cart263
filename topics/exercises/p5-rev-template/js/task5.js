@@ -24,7 +24,6 @@ function setup() {
 
 function draw() {
     createCanvas(600,600);
-    
     background('#000000');
     drawButton();
     drawEllipses();
