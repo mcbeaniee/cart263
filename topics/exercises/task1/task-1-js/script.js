@@ -6,33 +6,38 @@ console.log("we are a go!")
 /*** ALL ANWSERS TO BE ADDED IN THE ALLOCATED SPACE */
 /*** START PART ONE ACCESS */ 
 /* 1: all paragraph elements */
-/***CODE */
+/***CODE */ console.log(document.getElementsByTagName("p"));
 /***OUTPUT: 
- * 
+ * NodeList(9) [p#1, p#2.img-descript, p#3.img-descript, p#4.img-descript, p#5.img-descript, p#6.img-descript, p#7.img-descript, p#8.img-descript, p#9.img-descript]
  */
 
 
 /*************************************** */
 /* 2: only the first paragraph element */
-/***CODE */
+/***CODE */  console.log(document.getElementById("1"));
 /***OUTPUT: 
- * 
+ * <p id="1">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias perspiciatis blanditiis, et
+                laborum praesentium earum. Enim facere, quia commodi voluptate, quis asperiores, pariatur ducimus
+                officiis non
+                quasi officia sit veniam!
+            </p>
  */
 
 
 /*************************************** */
 /* 3: all elements with the class inner-container */
-/***CODE */
+/***CODE */  console.log(document.getElementsByClassName("inner-container"));
 /***OUTPUT: 
- * 
+ * HTMLCollection(8) [div.inner-container, div.inner-container, div.inner-container, div.inner-container, div.inner-container, div.inner-container, div.inner-container, div.inner-container
  */
 
 
 /*************************************** */
 /* 4: the last image element inside the element that has the class img-container */
-/***CODE */
+/***CODE */  console.log(document.getElementsByClassName("inner-container")[7].getElementsByTagName("img"));
 /***OUTPUT: 
- * 
+ * HTMLCollection [img.img-image]0
  */
 
 
@@ -40,17 +45,17 @@ console.log("we are a go!")
 /* 5A: all h2 elements */
 /* 5B: length of the list in 5A */
 /* 5C: the text content of the first element in the list from 5A */
-/***CODE */
+/***CODE */ console.log(document.getElementsByTagName("h2")[0].textContent);
 /***OUTPUT: 
- * 
+ * The header of this fancy page
  */
 
 
 /*************************************** */
 /* 6: the element with id name parent */
-/***CODE */
+/***CODE */ console.log(document.getElementById("parent"));
 /***OUTPUT: 
- * 
+ * <section id="parent">…</section>
  */
 
 /*************************************** */
@@ -61,30 +66,31 @@ console.log("we are a go!")
 /*** START PART TWO MODIFY */ 
 /*************************************** */
 /* 1: Select the first paragraph and replace the text within the paragraph... */
-/***CODE */
+/***CODE */console.log(document.getElementsByTagName("p")[0].textContent="text changed by ``AIDAN KHAN & JACK MCDONALD`` on the following date: `01/24/2025`.");
 /*************************************** */
 /* 2: Select all elements in the HTML that have the class name content-container
  and change the background color ... of first and second ...*/
-/***CODE */
+/***CODE */console.log(document.querySelectorAll(".content-container")[0].style.background = "orange");
+console.log(document.querySelectorAll(".content-container")[1].style.background = "purple"); 
 
 /*************************************** */
 /* 3: Change the src element of the first image element on the page to be ...
-/***CODE */
+/***CODE */ console.log(document.getElementsByClassName("img-container")[0].innerHTML = "<img class='img-image' src='task-1-images/seven.png'/>");
 
 /*************************************** */
 /* 4: Select the third paragraph element on the page and 
 replace the content (within the paragraph) to be an h2 element which contains the text `TEST 123`
-/***CODE */
+/***CODE */console.log(document.getElementsByTagName("p")[2].innerHTML = "<h2>TEST 123</h2>");
 
 /*************************************** */
 /* 5: Select the fourth paragraph element on the page and 
 add to the existing content an h2 element containing the text `TEST 123`
-/***CODE */
+/***CODE */console.log(document.getElementsByTagName("p")[3].innerHTML += "<h2>TEST 123</h2>");
 
 /*************************************** */
 /* 6: Select the fifth paragraph element on the page and add to the existing content 
 an img element that holds `one.png`, and add the class newStyle to said paragraph element.
-/***CODE */
+/***CODE */console.log(document.getElementsByTagName("p")[4].innerHTML += "<img class='newStyle' src='task-1-images/one.png'/>");
 
 
 /*************************************** */
@@ -95,6 +101,13 @@ assign the element from innerContainers variable with the same index
 (i.e. colors[0] should be allocated to the first innerContainers element, colors[1] to the second, etc ...) 
 a background using that color.
 /***CODE */
+let colors = ['red','blue','green','orange'];
+let innerContainers = [];
+innerContainers = document.getElementsByClassName("inner-container")
+console.log(innerContainers);
+for (let i = 0; i < innerContainers.length; i++) {
+    innerContainers[i].style.background=colors[i];
+}
 
 /*************************************** */
 /*** END PART TWO MODIFY */ 
