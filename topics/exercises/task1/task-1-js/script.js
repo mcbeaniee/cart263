@@ -1,4 +1,5 @@
 window.onload = setup;
+window.onload = customCreateElement;
 
 /** function setup */
 function setup(){
@@ -127,7 +128,14 @@ for (let i = 0; i < innerContainers.length; i++) {
 /* 1H: Iterate through the allPTagsThree array and call customCreateElement(), 
 passing the current allPTagsThree element as the parent with each iteration.*/
 /***CODE */
+let allPTagsThree = [];
+allPTagsThree = document.getElementsByTagName('p');
+console.log(allPTagsThree);
 
+function customCreateElement(parent){
+    document.createElement('p');
+    document.createTextNode('using create Element');
+}
 
 /***EXPLANATION::
  * 
