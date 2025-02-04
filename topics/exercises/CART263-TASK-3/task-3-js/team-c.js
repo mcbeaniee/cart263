@@ -91,6 +91,11 @@ function setup_C() {
 
   function aniA(parentCanvas) {
     console.log("in A");
+    window.requestAnimationFrame(animate);
+
+    function animate(){
+      
+    }
   }
   /**************** ANI B ************************************ */
   /** PUT ALL YOUR CODE FOR ANIMATION B INSIDE  HERE */
@@ -110,9 +115,54 @@ function setup_C() {
    * remember you can define other functions inside....
    * Do not change any code above or the HTML markup.
    * **/
+  
   function aniB(parentCanvas) {
     console.log("in B");
-  }
+    let gridArrayB = [];
+    let shades = [
+      '#ffd45e',
+      '#99e9f7'
+    ]
+    let waveNum = 1;
+    console.log(waveNum);
+
+    for(let i = 0; i<8;i++){
+      let rowsArray = [];
+      for(let j = 0; j<8; j++){
+        let parent = document.getElementById('ani_canvC_B');
+        let d = document.createElement('div');
+        d.classList.add('TEAM_C_gridCell');
+        parent.appendChild(d);
+        d.style.left = (i+1) * 50 + 'px';
+        d.style.top = (j+1) * 50 + 'px';
+        rowsArray[j] = d;
+        }
+        gridArrayB[i] = rowsArray; 
+        console.log(gridArrayB);
+        
+        
+    }
+    setInterval(animateWaves,100);
+    function animateWaves(){
+      for(let i = 0; i<8;i++){
+        for(let j = 0; j<8; j++){
+          let d = gridArrayB[i][j]
+          if (j<waveNum){
+            d.style.background = (shades[1]);
+          } else {
+            d.style.background = (shades[0]);
+          }
+          
+        }
+      }
+      
+      waveNum+=1;
+      if (waveNum = 7){
+        waveNum-=1;
+      }
+    }
+    }
+  
   /**************** ANI C ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN C INSIDE  HERE */
   /**************** ANI C ************************************ */
