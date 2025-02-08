@@ -120,11 +120,11 @@ function setup_C() {
     console.log("in B");
     let gridArrayB = [];
     let shades = [
-      '#ffd45e',
+      '#f7d281',
       '#99e9f7'
     ]
     let waveNum = 1;
-    console.log(waveNum);
+    
 
     for(let i = 0; i<8;i++){
       let rowsArray = [];
@@ -142,8 +142,10 @@ function setup_C() {
         
         
     }
-    setInterval(animateWaves,100);
+    let isMovingDown = true;
+    setInterval(animateWaves,200);
     function animateWaves(){
+      console.log(waveNum);
       for(let i = 0; i<8;i++){
         for(let j = 0; j<8; j++){
           let d = gridArrayB[i][j]
@@ -155,10 +157,17 @@ function setup_C() {
           
         }
       }
-      
-      waveNum+=1;
-      if (waveNum = 7){
+      if (isMovingDown){
+        waveNum+=1;
+      } else {
         waveNum-=1;
+      }
+      if (waveNum===1){
+        isMovingDown = true;
+      }
+      
+      if (waveNum === 7){
+        isMovingDown = false;
       }
     }
     }
@@ -182,15 +191,54 @@ function setup_C() {
 
 
   function aniC(parentCanvas) {
+    let gridArrayC = [];
+    let shadesC = [
+      '#34cfeb',
+      '#99e9f7',
+      '#61aab8',
+      '#0c93ab',
+      '#26d1f0',
+      '#36a6ba',
+      '#9bcbd4'
+    ]
 
-    console.log("in C");
+    for(let i = 0; i<25;i++){
+      let rowsArrayC = [];
+      for(let j = 0; j<25; j++){
+        let parentC = document.getElementById('ani_canvC_C');
+        let d = document.createElement('div');
+        d.classList.add('TEAM_C_gridCellC');
+        parentC.appendChild(d);
+        d.style.left = (i+1) * 15 + 'px';
+        d.style.top = (j+1) * 15 + 'px';
+        rowsArrayC[j] = d;
+        }
+        gridArrayC[i] = rowsArrayC; 
+        console.log(gridArrayC);
+        
+        
+    }
+
+  
     /*** THIS IS THE CALLBACK FOR KEY DOWN ( DO NOT CHANGE THE NAME..) */
     windowKeyDownRef = function (e) {
       //code for key down in here
+
       console.log(e)
       //SAMPLE KEY CHECK (you do not have to use)
       if (e.code === "Space") {
+        let randomNumber1 = Math.floor(Math.random()*26)
+        let randomNumber2 = Math.floor(Math.random()*26)
+        console.log(randomNumber1)
+        console.log(randomNumber2)
+        let shadesNumber = Math.floor(Math.random()*(shadesC.length+1))
+        let randomDiv = gridArrayC[randomNumber1][randomNumber2]
+        console.log("in C");
+        console.log(randomDiv);
         console.log("team-space down")
+
+        randomDiv.style.background = (shadesC[shadesNumber]);
+        
       }
     };
 
@@ -203,6 +251,8 @@ function setup_C() {
       }
 
     };
+
+    
 
     //DO NOT REMOVE
     window.addEventListener("keydown", windowKeyDownRef);

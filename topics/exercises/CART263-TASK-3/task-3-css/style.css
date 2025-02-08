@@ -110,6 +110,15 @@ body{
 
     transform: translate(-105%,-105%);
   }
+
+  .TEAM_C_gridCellC{
+    width:10px;
+    height:10px;
+    background-color:white;
+    position: absolute;
+    border-width:5px;
+    transform: translate(-125%, -125%);
+  }
 /*CSS TEAM H**/
 
 .TEAM_H_box{
