@@ -1,6 +1,11 @@
 window.onload = function (){
+
 // Our garden
 let garden = {
+    // array for squirrels 
+    squirrels: [],
+    //amount of squirrels in the garden
+    numSquirrels: 5,
     // An array to store the individual flowers
     flowers: [],
     // How many flowers in the garden
@@ -68,6 +73,26 @@ let garden = {
       for (let i = 0; i < garden.numFlowers; i++) {
         // Add the flower to the array of flowers
         garden.flowers[i].renderFlower();
+      }
+
+      for (let i = 0; i<garden.numSquirrels; i++){
+        //variables
+        let x = Math.random() * (window.innerWidth);
+        let y = Math.random() * 120;
+        let size = Math.random() * 20 + 40;
+        let furColor = {
+          r:parseInt(Math.random() * 155) + 10,
+          g:parseInt(Math.random() * 155) + 10,
+          b:parseInt(Math.random() * 155) + 10,
+        };
+
+        let squirrel = new Squirrel(x,y,size,furColor);
+
+        garden.squirrels.push(squirrel);
+      }
+
+      for (let i = 0; i<garden.numSquirrels; i++){
+        garden.squirrels[i].renderSquirrel();
       }
   }
   createAndRenderTheGarden();
