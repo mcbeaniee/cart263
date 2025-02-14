@@ -8,7 +8,9 @@ class Squirrel {
         this.squirrelBodyDiv = document.createElement('div');
 
         this.textSmiley = ':)';
-
+        this.moveX = 1;
+        this.moveY = 1;
+        
         
     }
     renderSquirrel() {
@@ -16,24 +18,39 @@ class Squirrel {
         window.requestAnimationFrame(function(){
             self.animateSquirrels()
         });
+        
         this.squirrelBodyDiv.classList.add('squirrel-body');
         this.squirrelBodyDiv.style.width = this.size + 'px'
         this.squirrelBodyDiv.style.height = this.size + 'px'
-        this.squirrelBodyDiv.style.background = `rgb(${this.furColor.r},${this.furColor.g},${this.furColor.b})`;
+        this.squirrelBodyDiv.style.backgroundColor = this.furColor;
         this.squirrelBodyDiv.style.left = this.x+"px";
         this.squirrelBodyDiv.style.top = this.y+"px";
+        this.squirrelBodyDiv.innerHTML += '<p>【≽ܫ≼】totally a squirrel</p>';
 
         //add squirrels to DOM
         document.getElementsByClassName('grass')[0].appendChild(this.squirrelBodyDiv);
     }
 
     animateSquirrels(){
+
         let self = this;
         let d = this.squirrelBodyDiv;
-        d.style.left = parseInt(d.style.left) + 5 + 'px';
-        d.style.top = parseInt(d.style.top) + 5 + 'px';
+        let left = parseInt(d.style.left) + this.moveX;
+        let top = parseInt(d.style.top) + this.moveY;
+
+        
+        if (left <= 0 || left >= 1890 - 20) {
+            this.moveX *= -1;
+        }
+        if (top <= 0 || top >= 645 - 20) {
+            this.moveY *= -1;
+        }
+        
+        d.style.left = left + 'px';
+        d.style.top = top + 'px';
         window.requestAnimationFrame(function(){
             self.animateSquirrels()
         });
+
     }
 }

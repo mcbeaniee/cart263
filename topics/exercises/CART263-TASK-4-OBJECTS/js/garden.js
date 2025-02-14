@@ -75,18 +75,22 @@ let garden = {
         garden.flowers[i].renderFlower();
       }
 
+    //create some squirrels
       for (let i = 0; i<garden.numSquirrels; i++){
         //variables
         let x = Math.random() * (window.innerWidth);
         let y = Math.random() * 120;
         let size = Math.random() * 20 + 40;
-        let furColor = {
-          r:parseInt(Math.random() * 155) + 10,
-          g:parseInt(Math.random() * 155) + 10,
-          b:parseInt(Math.random() * 155) + 10,
-        };
-
-        let squirrel = new Squirrel(x,y,size,furColor);
+        let squirrelShades = [
+          '#858585',
+          '#858585',
+          '#858585',
+          '#5e4831',
+          '#ab9680',
+          '#3f4d47'
+        ]
+        let shadesNumber = Math.floor(Math.random()*(squirrelShades.length+1));
+        let squirrel = new Squirrel(x,y,size,(squirrelShades[shadesNumber]));
 
         garden.squirrels.push(squirrel);
       }
