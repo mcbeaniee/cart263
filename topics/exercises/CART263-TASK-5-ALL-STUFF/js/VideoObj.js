@@ -29,43 +29,50 @@ class VideoObj {
       //get value from input field
       self.userProvidedBlur = blurInput.value;
       console.log(self.userProvidedBlur);
+      self.context.filter = `blur(${self.userProvidedBlur}px)`;
     });
 
     filterButton_sepia.addEventListener("click", function () {
       //get value from input field
       self.userProvidedSepia = sepiaInput.value;
       console.log(self.userProvidedSepia);
+      self.context.filter = `sepia(${self.userProvidedSepia}%)`;
     });
 
     filterButton_hue.addEventListener("click", function () {
       //get value from input field
       self.userProvidedHue = hueInput.value;
       console.log(self.userProvidedHue);
+      self.context.filter = `hue-rotate(${self.userProvidedHue}deg)`;
     });
 
     filterButton_invert.addEventListener("click", function () {
       //get value from input field
       self.userProvidedInvert = invertInput.value;
       console.log(self.userProvidedInvert);
+      self.context.filter = `invert(${self.userProvidedInvert}%)`;
     });
   }
 
   display() {
     this.context.save();
-    this.context.filter = `blur(${this.userProvidedBlur}px)`;
+    let mouseOffsetX = parseInt(this.clientX);
+    let mouseOffsetY = parseInt(this.clientY);
     this.context.drawImage(this.videoElement, this.x, this.y, this.w, this.h);
-    this.context.fillStyle = this.shapeCol;
-    this.context.fillRect(this.shapeX, this.shapeY, 50,50)
     this.context.restore();
   }
 
     //called when rectangle color is to be updated
   changeColor(newCol){
    /** FILL IN */
+    this.shapeCol = '#ffffff';
   }
+
   //called when rectangle Pos is to be updated
   updatePositionRect(mx,my){
      /** FILL IN */
+     this.context.fillStyle = this.shapeCol;
+     this.context.fillRect(this.shapeX, this.shapeY, mx,my);
   }
   update(videoElement) {
     this.videoElement = videoElement;

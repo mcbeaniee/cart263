@@ -5,6 +5,7 @@ class DrawingBoard {
     this.context = context;
     this.objectsOnCanvas = [];
     let self = this;
+    
     this.drawingBoardId = drawingBoardId;
     //each element has a mouse clicked and a mouse over
     this.canvas.addEventListener("click", function (e) {
@@ -16,9 +17,11 @@ class DrawingBoard {
     });
   }
 
+  
   overCanvas(e) {
     //console.log("over");
     this.canvasBoundingRegion = this.canvas.getBoundingClientRect();
+    let drawingBoardD = document.getElementById("partD");
     this.mouseOffsetX = parseInt(e.clientX - this.canvasBoundingRegion.x);
     this.mouseOffsetY = parseInt(e.clientY - this.canvasBoundingRegion.y);
     console.log(this.mouseOffsetX, this.mouseOffsetY);
@@ -35,6 +38,7 @@ class DrawingBoard {
     }
     if(this.drawingBoardId ==="partD"){
       console.log("in D")
+      drawingBoardD.updatePositionRect(this.mouseOffsetX,this.mouseOffsetY);
    }
   }
 
