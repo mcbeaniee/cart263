@@ -28,8 +28,6 @@ let drawingBoardA = new DrawingBoard(theCanvases[0],theContexts[0],theCanvases[0
 drawingBoardA.addObj(new CircularObj(100,100,20,"#FFC300","#E6E6FA", drawingBoardA.context))
 drawingBoardA.display();
 
-
-
 let drawingBoardB = new DrawingBoard(theCanvases[1],theContexts[1],theCanvases[1].id);
 //add a rectangular object to canvas B
 drawingBoardB.addObj(new RectangularObj(100,100,50,70,"#FF5733","#E6E6FA",drawingBoardB.context))
@@ -44,6 +42,7 @@ drawingBoardC.display();
 let drawingBoardD = new DrawingBoard(theCanvases[3],theContexts[3],theCanvases[3].id);
 drawingBoardD.addObj(new VideoObj(0,0,400,300,videoEl,drawingBoardD.context))
 drawingBoardD.display();
+
 
 
 /*** RUN THE ANIMATION LOOP  */

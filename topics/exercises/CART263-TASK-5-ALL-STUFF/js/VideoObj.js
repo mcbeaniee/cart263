@@ -54,10 +54,11 @@ class VideoObj {
     });
   }
 
+
   display() {
     this.context.save();
-    let mouseOffsetX = parseInt(this.clientX);
-    let mouseOffsetY = parseInt(this.clientY);
+    this.context.fillStyle = this.shapeCol;
+    this.context.fillRect(this.shapeX, this.shapeY, 50,50);
     this.context.drawImage(this.videoElement, this.x, this.y, this.w, this.h);
     this.context.restore();
   }
@@ -65,14 +66,14 @@ class VideoObj {
     //called when rectangle color is to be updated
   changeColor(newCol){
    /** FILL IN */
-    this.shapeCol = '#ffffff';
+    this.shapeCol = newCol;
   }
 
   //called when rectangle Pos is to be updated
   updatePositionRect(mx,my){
      /** FILL IN */
-     this.context.fillStyle = this.shapeCol;
-     this.context.fillRect(this.shapeX, this.shapeY, mx,my);
+    this.shapeX = mx;
+    this.shapeY = my;
   }
   update(videoElement) {
     this.videoElement = videoElement;

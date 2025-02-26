@@ -5,7 +5,6 @@ class DrawingBoard {
     this.context = context;
     this.objectsOnCanvas = [];
     let self = this;
-    
     this.drawingBoardId = drawingBoardId;
     //each element has a mouse clicked and a mouse over
     this.canvas.addEventListener("click", function (e) {
@@ -14,14 +13,13 @@ class DrawingBoard {
 
     this.canvas.addEventListener("mousemove", function (e) {
       self.overCanvas(e);
+      
     });
   }
 
-  
   overCanvas(e) {
     //console.log("over");
     this.canvasBoundingRegion = this.canvas.getBoundingClientRect();
-    let drawingBoardD = document.getElementById("partD");
     this.mouseOffsetX = parseInt(e.clientX - this.canvasBoundingRegion.x);
     this.mouseOffsetY = parseInt(e.clientY - this.canvasBoundingRegion.y);
     console.log(this.mouseOffsetX, this.mouseOffsetY);
@@ -38,7 +36,10 @@ class DrawingBoard {
     }
     if(this.drawingBoardId ==="partD"){
       console.log("in D")
-      drawingBoardD.updatePositionRect(this.mouseOffsetX,this.mouseOffsetY);
+      for (let i = 0; i < this.objectsOnCanvas.length; i++) {
+        this.objectsOnCanvas[i].updatePositionRect(this.mouseOffsetX, this.mouseOffsetY);
+        this.objectsOnCanvas[i].display();
+      }
    }
   }
 
@@ -62,6 +63,10 @@ class DrawingBoard {
     }
     if(this.drawingBoardId ==="partD"){
       console.log("in D")
+      for (let i = 0; i < this.objectsOnCanvas.length; i++) {
+        this.objectsOnCanvas[i].changeColor('white');
+        this.objectsOnCanvas[i].display();
+      }
       }
   }
   /* method to add obj to canvas */
