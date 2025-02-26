@@ -48,6 +48,7 @@ class DrawingBoard {
     this.canvasBoundingRegion = this.canvas.getBoundingClientRect();
     this.mouseOffsetX = parseInt(e.clientX - this.canvasBoundingRegion.x);
     this.mouseOffsetY = parseInt(e.clientY - this.canvasBoundingRegion.y);
+    let squareIsBlack = true;
     //console.log(this.mouseOffsetX, this.mouseOffsetY);
      
     //differentiate which canvas
@@ -63,8 +64,14 @@ class DrawingBoard {
     }
     if(this.drawingBoardId ==="partD"){
       console.log("in D")
+      console.log(squareIsBlack);
       for (let i = 0; i < this.objectsOnCanvas.length; i++) {
-        this.objectsOnCanvas[i].changeColor('white');
+        squareIsBlack = !squareIsBlack;
+        if (squareIsBlack = true){
+          this.objectsOnCanvas[i].changeColor('#ffffff');
+        } else {
+          this.objectsOnCanvas[i].changeColor('#000000');
+        }
         this.objectsOnCanvas[i].display();
       }
       }
