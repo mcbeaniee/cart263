@@ -50,23 +50,34 @@ function run() {
   function runPartC(rainbow_words, seed_phrase_array) {
     console.log(rainbow_words);
     console.log(seed_phrase_array);
+    let poem_sentence = "";
+    let nothingEverHappens = 0;
     for(let i = 0;i < seed_phrase_array.length; i++){
-      let nextChar = seed_phrase_array[i];
+      console.log('in loop 1');
       let incrementLetter = 0;
-      console.log(nextChar.charAt(incrementLetter));
-      
-      console.log(nextChar)
+      let nextChar = seed_phrase_array[i];
       for (let j = 0; j < rainbow_words.length; j++){
         let nextChar2 = rainbow_words[j];
-        if (nextChar2.charAt(incrementLetter) = nextChar.charAt(incrementLetter)){
-          return nextChar2;
-          incrementLetter += 1;
-        } 
-        console.log(nextChar2)
+        if (nextChar2[incrementLetter] == nextChar[incrementLetter]){
+          poem_sentence += nextChar2 + " "; //add to array
+          console.log(nextChar2)
+          incrementLetter += 1;   //increment to next letter\
+          j = 0;
+          console.log(poem_sentence)
+          nothingEverHappens = 0;
+        } else {
+          nothingEverHappens +=1;
+        }
+        if (nothingEverHappens === rainbow_words.length){
+          incrementLetter +=1; 
+          j = 0;
+          break;
+        }
+        if (incrementLetter>=nextChar.length) {
+          break;
+        }
       }
-      
-      
-
+        
     }
     //to next stage
     runPartD(poem_sentence);
