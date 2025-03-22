@@ -51,33 +51,22 @@ function run() {
     console.log(rainbow_words);
     console.log(seed_phrase_array);
     let poem_sentence = "";
-    let nothingEverHappens = 0;
+
     for(let i = 0;i < seed_phrase_array.length; i++){
       console.log('in loop 1');
-      let incrementLetter = 0;
+      
       let nextChar = seed_phrase_array[i];
-      for (let j = 0; j < rainbow_words.length; j++){
-        let nextChar2 = rainbow_words[j];
-        if (nextChar2[incrementLetter] == nextChar[incrementLetter]){
-          poem_sentence += nextChar2 + " "; //add to array
-          console.log(nextChar2)
-          incrementLetter += 1;   //increment to next letter\
-          j = 0;
-          console.log(poem_sentence)
-          nothingEverHappens = 0;
-        } else {
-          nothingEverHappens +=1;
-        }
-        if (nothingEverHappens === rainbow_words.length){
-          incrementLetter +=1; 
-          j = 0;
-          break;
-        }
-        if (incrementLetter>=nextChar.length) {
-          break;
-        }
+      for (let k = 0; k < nextChar.length; k++){
+        for (let j = 0; j < rainbow_words.length; j++){
+          let nextChar2 = rainbow_words[j];
+          if (nextChar2[k] == nextChar[k]){
+            poem_sentence += nextChar2 + " "; //add to array
+            console.log(nextChar2)
+            console.log(poem_sentence)
+            break;
+          } 
+        }  
       }
-        
     }
     //to next stage
     runPartD(poem_sentence);
@@ -86,13 +75,56 @@ function run() {
   
    /****** PART D:: VISUALIZE  */
   function runPartD(new_sentence){
+    const outputElement = document.getElementById('output')
+    outputElement.style.display = 'block';
+    
+    for(let i = 0;i < new_sentence.length; i++){
+      //color 
+      function random_rgba() {
+        let o = Math.round, r = Math.random, s = 255;
+        return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+      } 
+      let colour = random_rgba();
+      let colour2 = random_rgba();
+      //create divs
+      let newDiv = document.createElement('div');
+      let newText = document.createTextNode(new_sentence[i]);
+      outputElement.appendChild(newText);
+      newDiv.appendChild(newText);
+      outputElement.appendChild(newDiv);
+      newDiv.style.background=(colour);
+      newDiv.style.color=(colour2);
+      //animation
+      function animateDivs(){
+        let moveX = 1
+        let moveY = 1
+        let left = newDiv.style.left + moveX
+        let top = newDiv.style.top + moveY
+        if (left <= 0 || left >= 1890 - 20) {
+          moveX *= -1;
+        }
+        if (top <= 0 || top >= 645 - 20) {
+          moveY *= -1;
+        }
+        newDiv.style.left = left + 'px';
+        newDiv.style.top = top + 'px';
+        
+      }
+      window.requestAnimationFrame(function(){
+        animateDivs();
+      });
+      }
 
   }
 
   /****** PART E:: RESET  */
   function resetPoem() {
   /*** TO FILL IN */
-  
+  let outputDiv = document.getElementById('output')
+  outputDiv.innerHTML = "";
+  outputDiv.style.display = ('none');
+  let inputPhrase = document.getElementById('phrase')
+  inputPhrase.value = "";
   }
 } //window onload
 
