@@ -76,7 +76,7 @@ function run() {
    /****** PART D:: VISUALIZE  */
   function runPartD(new_sentence){
     const outputElement = document.getElementById('output')
-    outputElement.style.display = 'block';
+    outputElement.style.display = 'inline-block';
     
     for(let i = 0;i < new_sentence.length; i++){
       //color 
@@ -94,6 +94,7 @@ function run() {
       outputElement.appendChild(newDiv);
       newDiv.style.background=(colour);
       newDiv.style.color=(colour2);
+      newDiv.style.display='inline-block';
       //animation
       function animateDivs(){
         let moveX = 1
