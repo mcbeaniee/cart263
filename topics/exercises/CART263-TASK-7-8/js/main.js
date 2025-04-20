@@ -11,8 +11,11 @@ window.onload = async function(){
     //output parsed json file and map to new array with color parameter
     let irisesWithColors = []
     let possibleColor = ["#5d3fd3","#a73fd3","#d33fb5","#d35d3f","#d3a73f"]
-    let randomColor = Math.floor(Math.random()*(possibleColor.length+1));
+    let randomColor = Math.floor(Math.random()*(possibleColor.length));
     irisesWithColors = data.map(obj => {
+        for (i=0;i>data.length;i++){
+            
+        }
         return { ...obj, color: possibleColor[randomColor]}
     });
     //filter array 
